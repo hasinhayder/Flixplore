@@ -34,9 +34,13 @@ p.left {
 }
 
 p.middle {
-    margin-top: 90px;
+    margin-top: 70px;
     text-align: center;
     font: 400 15px/1.6 'Gudea', Verdana, Helvetica, sans-serif;
+    color:#EFEFEF;
+}
+
+p.middle a{
     color:#EFEFEF;
 }
 
