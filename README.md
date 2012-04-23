@@ -10,16 +10,14 @@ and paste the folder in "/usr/local/meteor/packages" directory.
 Running Flixplore in your local environment
 
 1. Install Meteor
-
-In terminal, 
-meteor create flixploretest
-cd flixplorertest
-meteor add jquery
-meteor add http
-meteor add jquery-colorbox
+2. $ > meteor create flixploretest
+3. $ > cd flixplorertest
+4. $ > meteor add jquery
+5. $ > meteor add http
+6. $ > meteor add jquery-colorbox
 
 now paste all the contents of flixplore directory in your "flixploretest" directory. 
 
-7. meteor 
+7. $ > meteor 
 
 Now point your browser to http://localhost:3000 . Thats it. For anything, feel free to drop me a line at hasin@leevio.com
