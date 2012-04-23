@@ -1,0 +1,66 @@
+<head>
+    <title>Flixplorer: Daily flickr explores using Meteor</title>
+    <link href='http://fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div class='container'>
+    <div class="row">
+        <div class="column grid_6">
+            <h1>Flixplorer</h1>
+        </div>
+        <div class="column grid_6">
+            &nbsp
+        </div>
+    </div>
+    <div class="row">
+        <div class="column grid_12">
+            <p class="left">
+                Right click to open in Flickr
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column grid_12">
+            {{>gallery}}
+        </div>
+    </div>
+</div>
+<div class='footer'>
+    <div class="row">
+        <div class="column grid_12">
+            {{>footer}}
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+<template name="gallery">
+    <ul>
+        {{#each photos}}
+        <li>
+            <a title="{{data.title}} by {{data.ownername}}" style="text-decoration: none;" class="flx"
+               data-url="http://www.flickr.com/photos/{{data.owner}}/{{data.id}}"
+               href="http://farm{{data.farm}}.staticflickr.com/{{data.server}}/{{data.id}}_{{data.secret}}_z.jpg">
+                <img src="http://farm{{data.farm}}.staticflickr.com/{{data.server}}/{{data.id}}_{{data.secret}}_s.jpg"
+                     data-src="http://farm{{data.farm}}.staticflickr.com/{{data.server}}/{{data.id}}_{{data.secret}}_z.jpg"
+                     data-ownername="{{data.ownername}}"
+                     data-title="{{data.title}}"
+                     data-owner="{{data.owner}}">
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</template>
+<template name="footer">
+<div>
+    <p class='middle'>
+        Flixplorer display first 110 photos from today's flickr Explore list. Developed using <a href='http://meteor.com' target="_blank">Project Meteor</a><br/>
+        Flixplore is developed by some sleepless guys at <a href='http://leevio.com' target="_blank">Leevio</a>, Fork it in <a href='' target="_blank">Github</a>
+
+    </p>
+</div>
+</template>
