@@ -1,7 +1,9 @@
-Sphotos = new Meteor.Collection("photos");
+var curDate = new Date();
+var key = "photo"+curDate.getHours();
+Sphotos = new Meteor.Collection(key);
 if (Meteor.is_client) {
     Template.gallery.photos = function () {
-        return Sphotos.find({name:"photo"});
+        return Sphotos.find({name:key});
     }
 
     Template.gallery.events = {
@@ -17,7 +19,7 @@ if (Meteor.is_client) {
                 default:
                     break;
             }
-            event.stopPropagation();
+            event.preventDefault();
             return false;
         }
       };
@@ -27,7 +29,7 @@ if (Meteor.is_server) {
     Meteor.startup(function () {
         // code to run on server at startup
         //Sphotos.remove({"name":"photo"});
-        if (Sphotos.find({"name":"photo"}).count() == 0) {
+        if (Sphotos.find({name:key}).count() == 0) {
             Meteor.http.call("GET",
                 "http://api.flickr.com/services/rest/?method=flickr.interestingness.getList&extras=owner_name&api_key=8cc0f91339ab3da808b215c72a3d564d&per_page=120&format=json&nojsoncallback=1",
                 {},
@@ -37,7 +39,7 @@ if (Meteor.is_server) {
                         var result = JSON.parse(result.content);
                         for (i = 0; i < 110; i++) {
                             photo = result.photos.photo[i];
-                            Sphotos.insert({name:"photo", data:photo});
+                            Sphotos.insert({name:key, data:photo});
                         }
                     }
                 });
